@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { AddCard } from "../slice/bookslice";
+import styled from "styled-components";
+import Button, { LARGE, SMALL, THEM_BLK } from "./element/Button";
 
 function MainForm() {
   const init = {
@@ -11,6 +13,7 @@ function MainForm() {
 
   const dispatch = useDispatch();
   const [post, setPost] = useState(init);
+  console.log(post)
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -18,45 +21,89 @@ function MainForm() {
   };
 
   const onClickHandler = (e) => {
-    e.preventDefault()
-    if(post.title&&post.review&&post.writer !== ""){
-      return  dispatch(AddCard(post));
+    e.preventDefault();
+    if (post.title && post.review && post.writer !== "") {
+      return dispatch(AddCard(post));
     } else {
-      alert("작성자,책이름,감상평 모두 작성해주세요!")
-    }   
+      alert("작성자,책이름,감상평 모두 작성해주세요!");
+    }
     setPost(init);
   };
 
   return (
-    <div>
-      <h3>작성자</h3>
+    <Form onSubmit={onClickHandler}>
+      <h1>오늘의 책을 알려주세요.</h1>
+      <Wraper>
       <input
         type="text"
         name="writer"
         value={post.writer}
-        maxLength = {10}
+        maxLength={10}
+        placeholder="작성자"
         onChange={(e) => onChangeHandler(e)}
       />
-      <h3>책 이름</h3>
       <input
         type="text"
         name="title"
         value={post.title}
-        maxLength = {50}
+        maxLength={50}
+        placeholder="책이름"
         onChange={(e) => onChangeHandler(e)}
       />
-      <h3>감상평</h3>
+      </Wraper>
       <textarea
         cols="50"
         rows="10"
         name="review"
+        placeholder="감상평"
         value={post.review}
-        maxLength = {1000}
+        maxLength={1000}
         onChange={(e) => onChangeHandler(e)}
       />
-      <button onClick={onClickHandler}>추가하기</button>
-    </div>
+      <Button
+       type={"submit"}
+        disabled={(!post.writer||!post.title||!post.review)}
+        styles={{ color: "white" }}
+        theme={THEM_BLK}
+        size={LARGE}
+      >
+        추가
+      </Button>
+    </Form>
   );
 }
 
 export default MainForm;
+
+
+
+const Form = styled.form`
+display: flex;
+  width: 500px;
+  height: 200px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  flex-direction: column;
+  padding: 50px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 100px auto 0 auto;
+`;
+
+const Wraper = styled.div`
+display: flex;
+width: 420px;
+  justify-content: space-between;
+  gap:50px;
+  margin: 20px;
+`; 
+
+
+/* const Wraper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: black;
+`; */
