@@ -7,7 +7,7 @@ function Header() {
   const navigate = useNavigate();
   return (
     <header>
-      <StHeader onClick={()=>{navigate("/")}}>오늘의 책</StHeader>
+      <StHeader onClick={()=>{navigate("/")}}>📖 오늘의 책</StHeader>
     </header>
   );
 };

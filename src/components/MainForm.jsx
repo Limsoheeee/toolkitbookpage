@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { AddCard } from "../slice/bookslice";
+import { __addPost, __getPostId } from "../slice/bookSlice";
 import styled from "styled-components";
 import Button, { LARGE, SMALL, THEM_BLK } from "./element/Button";
 
 function MainForm() {
+  
+
   const init = {
     title: "",
     writer: "",
     review: "",
   };
-
   const dispatch = useDispatch();
   const [post, setPost] = useState(init);
-  console.log(post)
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -22,34 +22,32 @@ function MainForm() {
 
   const onClickHandler = (e) => {
     e.preventDefault();
-    if (post.title && post.review && post.writer !== "") {
-      return dispatch(AddCard(post));
-    } else {
-      alert("작성자,책이름,감상평 모두 작성해주세요!");
-    }
+    dispatch(__addPost(post));
     setPost(init);
+
   };
 
+
   return (
-    <Form onSubmit={onClickHandler}>
-      <h1>오늘의 책을 알려주세요.</h1>
+        <Form onSubmit={onClickHandler}>      
+      <h1>✏️ 오늘의 책을 알려주세요.</h1>
       <Wraper>
-      <input
-        type="text"
-        name="writer"
-        value={post.writer}
-        maxLength={10}
-        placeholder="작성자"
-        onChange={(e) => onChangeHandler(e)}
-      />
-      <input
-        type="text"
-        name="title"
-        value={post.title}
-        maxLength={50}
-        placeholder="책이름"
-        onChange={(e) => onChangeHandler(e)}
-      />
+        <input
+          type="text"
+          name="writer"
+          value={post.writer}
+          maxLength={10}
+          placeholder="작성자"
+          onChange={(e) => onChangeHandler(e)}
+        />
+        <input
+          type="text"
+          name="title"
+          value={post.title}
+          maxLength={50}
+          placeholder="책이름"
+          onChange={(e) => onChangeHandler(e)}
+        />
       </Wraper>
       <textarea
         cols="50"
@@ -61,8 +59,8 @@ function MainForm() {
         onChange={(e) => onChangeHandler(e)}
       />
       <Button
-       type={"submit"}
-        disabled={(!post.writer||!post.title||!post.review)}
+        type={"submit"}
+        disabled={!post.writer || !post.title || !post.review}
         styles={{ color: "white" }}
         theme={THEM_BLK}
         size={LARGE}
@@ -75,10 +73,8 @@ function MainForm() {
 
 export default MainForm;
 
-
-
 const Form = styled.form`
-display: flex;
+  display: flex;
   width: 500px;
   height: 200px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -93,17 +89,9 @@ display: flex;
 `;
 
 const Wraper = styled.div`
-display: flex;
-width: 420px;
-  justify-content: space-between;
-  gap:50px;
-  margin: 20px;
-`; 
-
-
-/* const Wraper = styled.div`
   display: flex;
+  width: 420px;
   justify-content: space-between;
-  flex-direction: row;
-  background-color: black;
-`; */
+  gap: 50px;
+  margin: 20px;
+`;

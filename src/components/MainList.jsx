@@ -7,7 +7,7 @@ function MainList() {
   return (
     <PL>
 <LT>
-  오늘 어떤책을 고르셨나요?
+  오늘 어떤책을 고르셨나요?😉 
 </LT>
       <MainItem />
     </PL>
