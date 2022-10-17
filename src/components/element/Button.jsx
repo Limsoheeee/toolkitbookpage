@@ -35,7 +35,7 @@ const BaseButton = styled.button`
   font-weight: 700;
   cursor: pointer;
   border-radius: 50px;
-  margin: 10px;
+  margin: 20px;
   transition: 300ms;
 
   &:disabled {

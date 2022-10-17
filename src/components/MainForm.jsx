@@ -24,7 +24,6 @@ function MainForm() {
     e.preventDefault();
     dispatch(__addPost(post));
     setPost(init);
-
   };
 
 

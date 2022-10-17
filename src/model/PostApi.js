@@ -15,3 +15,7 @@ export const addPostApi = async (post) => {
     const response = await axios.get(`${BASE_URL}/posts?id=${id}`);  
     return response.data[0];
   };
+
+  export const delPostApi = async (id) => {
+    await axios.delete(`${BASE_URL}/posts/${id}`);
+  };

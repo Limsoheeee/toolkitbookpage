@@ -19,6 +19,13 @@ function MainItem() {
 
   return (
     <Wraper>
+{/* 
+      {
+       posts.map((item)=>{
+        {id}
+       }) 
+      } */}
+
       {posts.map((item) => {
         return (
           <Content onClick={()=>{
@@ -40,7 +47,6 @@ const Wraper = styled.div`
   margin: 20px;
   gap: 30px;
   display: flex;
-
   flex-direction: column-reverse;
   cursor: pointer;
 `;

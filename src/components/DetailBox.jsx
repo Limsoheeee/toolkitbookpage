@@ -1,13 +1,14 @@
 import React,{useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { __getPostId } from "../slice/bookSlice";
-import { useParams } from "react-router-dom";
+import { __delPost, __getPostId } from "../slice/bookSlice";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button, { LARGE, SMALL, THEM_BLK, THEM_DEF, THEM_DEL } from "./element/Button";
 
 function DetailBox() {
   const post = useSelector((state) => state.bookSlice.post);
-  console.log(post)
+  const navigate = useNavigate();
+
 
   const { id } = useParams();
 
@@ -16,6 +17,12 @@ function DetailBox() {
   useEffect(() => {
     dispatch(__getPostId(id));
   }, [dispatch,id]);
+
+   const onClickDel =() =>{
+    console.log("del")
+    dispatch(__delPost(id))
+    navigate('/');
+   };
 
   return (
         <Container>
@@ -29,8 +36,9 @@ function DetailBox() {
           theme={THEM_DEF}
           >수정</Button> 
           <Button
-             type={"submit"}
+             type={"button"}
              theme={THEM_DEL}
+             on_click={onClickDel}
           >삭제</Button>
           </Wraper>
 

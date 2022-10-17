@@ -1,14 +1,11 @@
-import React from 'react'
-import MainItem from './MainItem';
+import React from "react";
+import MainItem from "./MainItem";
 import styled from "styled-components";
 
 function MainList() {
- 
   return (
     <PL>
-<LT>
-  오늘 어떤책을 고르셨나요?😉 
-</LT>
+      <LT>오늘 어떤책을 고르셨나요?😉</LT>
       <MainItem />
     </PL>
   );

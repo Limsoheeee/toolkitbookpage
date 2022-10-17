@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addPostApi, getPostApi, getPostIdApi } from "../model/PostApi";
+import { addPostApi, getPostApi, getPostIdApi,delPostApi } from "../model/PostApi";
 
 export const __addPost = createAsyncThunk(
   "addPost",
@@ -25,6 +25,14 @@ export const __getPostId = createAsyncThunk(
   }
 );
 
+export const __delPost = createAsyncThunk(
+  "delPost",
+  async (payload, thunkAPI) => {
+    await delPostApi(payload);
+    thunkAPI.dispatch(delPost(payload));
+  }
+);
+
 export const bookSlice = createSlice({
   name: "posts",
   initialState: {
@@ -42,11 +50,12 @@ export const bookSlice = createSlice({
     getPost_Id: (state, action) => {    
       state.post =  action.payload;                 
     },
-    
-
+    // delPost: (state, action) => {
+    //   state.posts = action.payload.filter((item)=>item.id !== action.payload);
+    // },   
   },
 });
 
-export const { addPost, getPost,getPost_Id } = bookSlice.actions;
+export const { addPost, getPost,getPost_Id,delPost } = bookSlice.actions;
 
 export default bookSlice.reducer;
