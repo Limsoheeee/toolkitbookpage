@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { __addPost, __getPostId } from "../slice/bookSlice";
 import styled from "styled-components";
-import Button, { LARGE, SMALL, THEM_BLK } from "./element/Button";
+import Button from "./element/Button";
 
 function MainForm() {
   
@@ -61,8 +61,8 @@ function MainForm() {
         type={"submit"}
         disabled={!post.writer || !post.title || !post.review}
         styles={{ color: "white" }}
-        theme={THEM_BLK}
-        size={LARGE}
+        theme={"black"}
+        size={"large"}
       >
         추가
       </Button>

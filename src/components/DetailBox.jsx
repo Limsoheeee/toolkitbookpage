@@ -4,6 +4,7 @@ import { __delPost, __getPostId } from "../slice/bookSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button, { LARGE, SMALL, THEM_BLK, THEM_DEF, THEM_DEL } from "./element/Button";
+import produce from 'immer';
 
 function DetailBox() {
   const post = useSelector((state) => state.bookSlice.post);
@@ -19,10 +20,11 @@ function DetailBox() {
   }, [dispatch,id]);
 
    const onClickDel =() =>{
-    console.log("del")
     dispatch(__delPost(id))
     navigate('/');
    };
+
+
 
   return (
         <Container>
@@ -34,6 +36,7 @@ function DetailBox() {
           <Button
           type={"submit"}
           theme={THEM_DEF}
+          on_click={()=>navigate(`/edit/${post.id}`)}
           >수정</Button> 
           <Button
              type={"button"}

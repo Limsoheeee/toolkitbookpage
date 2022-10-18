@@ -19,3 +19,8 @@ export const addPostApi = async (post) => {
   export const delPostApi = async (id) => {
     await axios.delete(`${BASE_URL}/posts/${id}`);
   };
+
+  export const editPostApi = async (edit) => {
+    console.log(edit);
+    await axios.put(`${BASE_URL}/posts/${edit.id}`,edit);
+  };

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addPostApi, getPostApi, getPostIdApi,delPostApi } from "../model/PostApi";
+import { addPostApi, getPostApi, getPostIdApi,delPostApi,editPostApi } from "../model/PostApi";
 
 export const __addPost = createAsyncThunk(
   "addPost",
@@ -33,6 +33,14 @@ export const __delPost = createAsyncThunk(
   }
 );
 
+export const __editPost = createAsyncThunk(
+  "editPost",
+  async (payload, thunkAPI) => {
+    await editPostApi(payload);
+    thunkAPI.dispatch(editPost(payload));
+  }
+);
+
 export const bookSlice = createSlice({
   name: "posts",
   initialState: {
@@ -44,18 +52,27 @@ export const bookSlice = createSlice({
       const id = state.posts[state.posts.length - 1]?.id + 1 || 0;
       state.posts.push({ id, ...action.payload });
     },
+    // setPost: () => {
+
+    // },
     getPost: (state, action) => {
       state.posts = action.payload;
     },
     getPost_Id: (state, action) => {    
       state.post =  action.payload;                 
     },
-    // delPost: (state, action) => {
-    //   state.posts = action.payload.filter((item)=>item.id !== action.payload);
-    // },   
+    delPost: (state, action) => {
+      state.posts = action.payload.filter((item)=>item.id !== action.payload);
+    },  
+    
+    editPost: (state, action) => {
+      state.posts = state.posts.map((todo)=>{
+        return todo.id === action.payload.id ? action.payload : todo
+      })
+    },
   },
 });
 
-export const { addPost, getPost,getPost_Id,delPost } = bookSlice.actions;
+export const { addPost, getPost,getPost_Id,delPost,editPost } = bookSlice.actions;
 
 export default bookSlice.reducer;

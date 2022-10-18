@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SMALL = "smaill";
 export const LARGE = "large";
+export const ADD = "add";
 export const THEM_DEF = "defalt";
 export const THEM_BLK = "black";
 export const THEM_DEL = "delete";
@@ -52,20 +53,13 @@ const BaseButton = styled.button`
         return `width:80px;`;
       case LARGE:
         return `width:160px;`;
+      case ADD:
+        return `width:50px;height:50px;`;
       default:
         return `width:80px;`;
     }
   }}
-  ${(props) => {
-    switch (props.size) {
-      case SMALL:
-        return `width:80px;`;
-      case LARGE:
-        return `width:160px;`;
-      default:
-        return `width:80px;`;
-    }
-  }}
+
   ${(props) => {
     switch (props.theme) {
       case THEM_BLK:
