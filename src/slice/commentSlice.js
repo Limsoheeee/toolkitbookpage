@@ -46,7 +46,7 @@ export const __editComment = createAsyncThunk(
   async (payload, thunkAPI) => {    
     await editCommentApi(payload);    
     thunkAPI.dispatch(editComment(payload));
-  }
+    }
 );
 
 export const commentSlice = createSlice({
@@ -78,9 +78,9 @@ export const commentSlice = createSlice({
     },
 
     editComment: (state, action) => {
-      state.comment = state.comment.map((comment)=>{
-        return comment.id === action.payload.id ? action.payload : comment
-      })
+      state.comment = state.comment.map((item)=>{
+        return item.id === action.payload.id ? action.payload : item;
+      })     
     },
   },
 });

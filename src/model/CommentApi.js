@@ -21,6 +21,5 @@ export const addCommentApi = async (comment) => {
   };
 
   export const editCommentApi = async (edit) => {
-    console.log(edit)
-    await axios.put(`${BASE_URL}/comments/${edit}`,edit);
+    await axios.put(`${BASE_URL}/comments/${edit.id}`,edit);
   };
