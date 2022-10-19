@@ -6,7 +6,7 @@ function Main() {
   return (
     <div>
       <MainForm />
-      <p>editedit</p>
+      <p>edit</p>
       <MainList />
     </div>
   );
