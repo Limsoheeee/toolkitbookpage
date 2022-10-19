@@ -2,11 +2,12 @@ import React from "react";
 import DetailBox from "../components/DetailBox";
 import CommentForm from "../components/CommentForm";
 import CommentList from "../components/CommentList";
-import Header from "../components/Header"
+import Header from "../components/Header";
 
 function Detail() {
   return (
     <div>
+      <p>ㅋㅋㅋ</p>
       <Header />
       <DetailBox />
       <CommentForm />
