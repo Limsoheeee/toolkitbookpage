@@ -43,9 +43,8 @@ export const __delComment = createAsyncThunk(
 
 export const __editComment = createAsyncThunk(
   "editComment",
-  async (payload, thunkAPI) => {
-    console.log(payload);
-    await editCommentApi(payload);
+  async (payload, thunkAPI) => {    
+    await editCommentApi(payload);    
     thunkAPI.dispatch(editComment(payload));
   }
 );

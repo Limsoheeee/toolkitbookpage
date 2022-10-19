@@ -1,60 +1,123 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { __getComment, __delComment,__editComment } from "../slice/commentSlice";
+import {
+  __getComment,
+  __delComment,
+  __editComment,
+} from "../slice/commentSlice";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import Button, { THEM_DEF, THEM_DEL } from "./element/Button";
 
-function CommentListItem() {
-  const [edit, setEdit] = useState(false);
-  const [bookEdit, setBookEdit] = useState("");
-  const comment = useSelector((state) => state.commentSlice.comment);
+function CommentListItem(props) {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { comment } = props;
+  const [edit, setEdit] = useState(false);
+  const [bookEdit, setBookEdit] = useState( comment||{} );
 
-  useEffect(() => {
-    dispatch(__getComment(id));
-  }, [dispatch, id]);
+  // useEffect(() => {
+  //   dispatch(__getComment(id));
+  // }, [dispatch, bookEdit]);
+
+  //init = {ment : 1, name"""}
+  //ment : 1
+  //ment : 12
+  // {0: 1, 1:2, ment : 1}
+
+  //init = {title:"", body:""}
+  // e.target: {title:"ㅇㄴㄹㄴㅇㄹ", body:"ㄴㅇㄹㄴㅇㄹ"}
+  // 전개 {title:"ㄴㅇㄹㄴㅇㄹ", body:"ㄴㅇㄹㄴㅇㄹ"}
+
+  const onChangeClick =(e)=>{
+    const{name,value} = e.target
+    setBookEdit({[name]:value,id:comment.id})    
+  }
+  console.log(bookEdit) 
 
   return (
-    <Wraper>
-      {comment.map((item) => {
-        return (
-          <div>
-            <Content key={item?.id}>
-              {item.name}님 : {item.ment}
-              <ButtonWraper>
-                
-                <Button
-                  type={"submit"}
-                  theme={THEM_DEF}
-                  on_click={() => {
-                  if(edit){
-                    setEdit(false);
-                    dispatch(__editComment(id, edit));
-                  }else{
-                    setEdit(true);
-                  }
-                  }}
-                >
-                  수정
-                </Button>
-                <Button
-                  type={"button"}
-                  theme={THEM_DEL}
-                  on_click={() => {
-                    dispatch(__delComment(item));
-                  }}
-                >
-                  삭제
-                </Button>
-              </ButtonWraper>
-            </Content>
-          </div>
-        );
-      })}
-    </Wraper>
+    <div>
+      <p>
+        {comment.name}
+        {edit ? (
+          <input
+            type="text"
+            name="ment"
+            value={bookEdit.ment ||comment.ment }
+            // value={bookEdit} -> {ment:"abcd"}
+            // value={bookEdit.ment} -> {"abcd"}
+            onChange={onChangeClick}
+          />
+        ) : (
+          comment.ment
+        )}
+        {edit ? <button
+        onClick={(e)=>{
+          e.preventDefault();
+          dispatch(__editComment(bookEdit))
+          setEdit(false)
+        }}
+        >완료</button> : <button onClick={()=>{setBookEdit(comment.ment);
+        setEdit(!edit)
+        }}>수정</button>}
+        <button onClick={() => dispatch(__delComment(comment))}>삭제</button>
+      </p>
+    </div>
   );
+  // const comment = useSelector((state) => state.commentSlice.comment);
+  // const [bookEdit, setBookEdit] = useState(comment||{});
+  // console.log(useState(comment));
+  // const [edit, setEdit] = useState(false);
+  // const dispatch = useDispatch();
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   dispatch(__getComment(id));
+  // }, [dispatch, id]);
+
+  // const onchangeHandler = (e)=>{
+  //   e.preventDefault();
+  //   const { name, value } = e.target;
+  //   setBookEdit({...bookEdit, [name]: value });
+  // };
+
+  // <Wraper tag={edit ? "form" : "div"}>
+  //   {comment.map((item) => {
+  //     return (
+  //       <div key={item?.id}></div>
+  //         <Content>
+  //         <form>
+  //           {edit ? <input type="text" Value={item.ment} name="ment" onChange={onchangeHandler}/> : item.ment}
+  //           </form>
+  //           <ButtonWraper>
+  //             <Button
+  //               type={"submit"}
+  //               theme={THEM_DEF}
+  //               on_click={() => {
+  //                 if (edit) {
+  //                   setEdit(false);
+  //                   dispatch(__editComment(item.id, bookEdit));
+  //                 } else {
+  //                   setEdit(true);
+  //                 }
+  //               }}
+  //             >
+  //               {edit ? "완료" : "수정"}
+  //             </Button>
+  //             <Button
+  //               type={"button"}
+  //               theme={THEM_DEL}
+  //               on_click={() => {
+  //                 dispatch(__delComment(item));
+  //               }}
+  //             >
+  //               삭제
+  //             </Button>
+  //           </ButtonWraper>
+  //         </Content>
+  //       </div>
+  //     );
+  //   })}
+  // </Wraper>
 }
 
 export default CommentListItem;

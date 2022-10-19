@@ -17,8 +17,88 @@
       "writer": "석원이",
       "review": "클로로내꼬얌",
       "id": 3
+    },
+    {
+      "title": "코드기어스",
+      "writer": "보라",
+      "review": "코드기어스 반역의 를루슈",
+      "id": 4
+    },
+    {
+      "title": "주술회전",
+      "writer": "연우",
+      "review": "귀칼보다 재밌음! 귀칼 초딩들나옴 노잼임 탄지로 못생김",
+      "id": 5
+    },
+    {
+      "title": "데뷔못하면죽는병",
+      "writer": "지영",
+      "review": "진짜재밌음",
+      "id": 6
+    },
+    {
+      "title": "광마회귀",
+      "writer": "보라",
+      "review": "미친 ㄴ....",
+      "id": 7
+    },
+    {
+      "title": "현생을살자....",
+      "writer": "애들아",
+      "review": "우리...현생을 살자...",
+      "id": 8
     }
   ],
   "post": {},
-  "comments": []
+  "comments": [
+    {
+      "id": 3,
+      "comment": "세일러문 재미없음",
+      "postId": 1
+    },
+    {
+      "comment": "ffff",
+      "postId": 1,
+      "id": 4
+    },
+    {
+      "name": "",
+      "ment": "",
+      "id": 10
+    },
+    {
+      "name": "",
+      "ment": "",
+      "id": 11
+    },
+    {
+      "name": "",
+      "ment": "",
+      "id": 12
+    },
+    {
+      "postid": 3,
+      "name": "임소희",
+      "ment": "안녕하세요",
+      "id": 13
+    },
+    {
+      "postid": 5,
+      "name": "임소희",
+      "ment": "재밌어요",
+      "id": 14
+    },
+    {
+      "postid": 8,
+      "name": "민영",
+      "ment": "재밌어요",
+      "id": 15
+    },
+    {
+      "postid": 8,
+      "name": "민영d",
+      "ment": "안녕하세요",
+      "id": 16
+    }
+  ]
 }
