@@ -30,15 +30,16 @@ function CommentListItem(props) {
 
   //{ment : 1, name:""} + ment: "abcd" ment만 덮자
   //풀어쓰고 있었던 ...bookEdit {ment : 1, name:""} X "1" O
-  const onChangeClick =(e)=>{
-    e.preventDefault();
-   dispatch(__editComment({...props,coment:bookEdit}));
-   setEdit(false);  
-  }
-  console.log(bookEdit) 
+  // const onChangeClick =(e)=>{
+  //   console.log("@submit!")
+  //   e.preventDefault();
+  //  dispatch(__editComment({...props,coment:bookEdit}));
+  //  setEdit(false);  
+  // }
+  
 
   return (
-    <form onSubmit={onChangeClick}>
+    <div>
       <p>
         {comment.name}
         {edit ? (
@@ -57,13 +58,14 @@ function CommentListItem(props) {
         {edit ? <button
         onClick={(e)=>{
           e.preventDefault();
-          dispatch(__editComment(bookEdit))
+          dispatch(__editComment({...comment,ment:bookEdit}));
           setEdit(false)
         }}
+        type="submit"
         >완료</button> : <button onClick={()=>{setEdit(!edit)}}>수정</button>}
         <button onClick={() => dispatch(__delComment(comment))}>삭제</button>
       </p>
-    </form>
+    </div>
   );
   // const comment = useSelector((state) => state.commentSlice.comment);
   // const [bookEdit, setBookEdit] = useState(comment||{});

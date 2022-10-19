@@ -11,11 +11,6 @@ export const addCommentApi = async (comment) => {
     return response.data;
   };
 
-//   export const getPostIdApi = async (id) => {
-//     const response = await axios.get(`${BASE_URL}/posts?id=${id}`);  
-//     return response.data[0];
-//   };
-
   export const delCommentApi = async (comment) => {
     await axios.delete(`${BASE_URL}/comments/${comment.id}`);
   };
