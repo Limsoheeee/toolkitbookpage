@@ -13,7 +13,7 @@ function CommentListItem(props) {
   const dispatch = useDispatch();
   const { comment } = props;
   const [edit, setEdit] = useState(false);
-  const [bookEdit, setBookEdit] = useState( comment||{} );
+  const [bookEdit, setBookEdit] = useState(comment);
 
   // useEffect(() => {
   //   dispatch(__getComment(id));
@@ -28,24 +28,28 @@ function CommentListItem(props) {
   // e.target: {title:"ㅇㄴㄹㄴㅇㄹ", body:"ㄴㅇㄹㄴㅇㄹ"}
   // 전개 {title:"ㄴㅇㄹㄴㅇㄹ", body:"ㄴㅇㄹㄴㅇㄹ"}
 
+  //{ment : 1, name:""} + ment: "abcd" ment만 덮자
+  //풀어쓰고 있었던 ...bookEdit {ment : 1, name:""} X "1" O
   const onChangeClick =(e)=>{
-    const{name,value} = e.target
-    setBookEdit({[name]:value,id:comment.id})    
+    e.preventDefault();
+   dispatch(__editComment({...props,coment:bookEdit}));
+   setEdit(false);  
   }
   console.log(bookEdit) 
 
   return (
-    <div>
+    <form onSubmit={onChangeClick}>
       <p>
         {comment.name}
         {edit ? (
           <input
             type="text"
             name="ment"
-            value={bookEdit.ment ||comment.ment }
-            // value={bookEdit} -> {ment:"abcd"}
-            // value={bookEdit.ment} -> {"abcd"}
-            onChange={onChangeClick}
+            required
+            default_value={comment.ment}
+            // value={bookEdit} -> bookEdit {ment:"abcd"}
+            // value={bookEdit.ment} -> ment {"abcd"}
+            onChange={(e) => setBookEdit(e.target.value)}
           />
         ) : (
           comment.ment
@@ -56,12 +60,10 @@ function CommentListItem(props) {
           dispatch(__editComment(bookEdit))
           setEdit(false)
         }}
-        >완료</button> : <button onClick={()=>{setBookEdit(comment.ment);
-        setEdit(!edit)
-        }}>수정</button>}
+        >완료</button> : <button onClick={()=>{setEdit(!edit)}}>수정</button>}
         <button onClick={() => dispatch(__delComment(comment))}>삭제</button>
       </p>
-    </div>
+    </form>
   );
   // const comment = useSelector((state) => state.commentSlice.comment);
   // const [bookEdit, setBookEdit] = useState(comment||{});
