@@ -18,24 +18,14 @@ export const __addComment = createAsyncThunk(
 export const __getComment = createAsyncThunk(
   "getComment",
   async (payload, thunkAPI) => {
-    //payload: 코멘트에서 받아온 주소창에 있던 id
     const response = await getCommentApi(payload);
-    thunkAPI.dispatch(getComment(response)); //response: axios에서 받아온 댓글들 [{}, {}]
+    thunkAPI.dispatch(getComment(response));
   }
 );
-
-// export const __getPostId = createAsyncThunk(
-//   "getPost_Id",
-//   async (payload, thunkAPI) => {
-//     const response = await getPostIdApi(payload);
-//     thunkAPI.dispatch(getPost_Id(response));
-//   }
-// );
 
 export const __delComment = createAsyncThunk(
   "delComment",
   async (payload, thunkAPI) => {
-    //id x {comment:}
     await delCommentApi(payload);
     thunkAPI.dispatch(delComment(payload));
   }
