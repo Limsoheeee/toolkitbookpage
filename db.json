@@ -77,28 +77,27 @@
       "id": 12
     },
     {
-      "postid": 3,
-      "name": "임소희",
-      "ment": "안녕하세요",
-      "id": 13
-    },
-    {
-      "postid": 5,
-      "name": "임소희",
-      "ment": "재밌어요",
-      "id": 14
-    },
-    {
-      "postid": 8,
-      "name": "소희",
-      "ment": "sdfsdf",
-      "id": 15
-    },
-    {
       "postid": 8,
       "name": "임소희",
       "ment": "재밌어요d",
       "id": 16
+    },
+    {
+      "name": "",
+      "ment": "",
+      "id": 17
+    },
+    {
+      "postid": 3,
+      "name": "임소희",
+      "ment": "재밌어요",
+      "id": 18
+    },
+    {
+      "postid": 3,
+      "name": "민영",
+      "ment": "sdf",
+      "id": 19
     }
   ]
 }

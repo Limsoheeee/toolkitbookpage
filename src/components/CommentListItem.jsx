@@ -38,7 +38,7 @@ function CommentListItem(props) {
   return (
     <Wraper>
       <p>
-        {comment.name}
+        {comment.name}님 : 
         {edit ? (
           <input
             type="text"
@@ -82,12 +82,11 @@ const Wraper = styled.div`
   flex-direction: column-reverse;
   /* margin: 100px auto 0 auto; */
 `;
-const Content = styled.li`
+const Content = styled.p`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   list-style: none;
   padding-left: 0px;
-  display: flex;
   text-align: center;
 `;
 
