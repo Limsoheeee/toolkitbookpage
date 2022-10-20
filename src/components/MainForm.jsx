@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __addPost, __getPostId } from "../slice/bookSlice";
+import { __addPost } from "../slice/bookSlice";
 import styled from "styled-components";
 import Button from "./element/Button";
 

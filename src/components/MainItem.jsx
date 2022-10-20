@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "./element/Button";
 import { __getPost, __getPostId } from "../slice/bookSlice";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";

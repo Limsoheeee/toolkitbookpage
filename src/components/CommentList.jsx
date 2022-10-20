@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CommentListItem from "./CommentListItem";
 import { useSelector, useDispatch } from "react-redux";
 import {__getComment} from "../slice/commentSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CommentList() {
   const commentList = useSelector((state) => state.commentSlice.comment);

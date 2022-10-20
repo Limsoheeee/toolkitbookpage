@@ -3,8 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { __delPost, __getPostId } from "../slice/bookSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import Button, { LARGE, SMALL, THEM_BLK, THEM_DEF, THEM_DEL } from "./element/Button";
-import produce from 'immer';
+import Button, { THEM_DEF, THEM_DEL } from "./element/Button";
 
 function DetailBox() {
   const post = useSelector((state) => state.bookSlice.post);

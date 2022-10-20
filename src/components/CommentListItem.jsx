@@ -82,18 +82,3 @@ const Wraper = styled.div`
   flex-direction: column-reverse;
   /* margin: 100px auto 0 auto; */
 `;
-const Content = styled.p`
-  display: flex;
-  flex-direction: column-reverse;
-  list-style: none;
-  padding-left: 0px;
-  text-align: center;
-`;
-
-const ButtonWraper = styled.div`
-  display: flex;
-  /* justify-content: space-between; */
-  gap: 10px;
-  margin-bottom: 20px;
-  align-items: center;
-`;

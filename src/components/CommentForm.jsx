@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import Button, { LARGE, SMALL, THEM_BLK, THEM_DEF, THEM_DEL } from "./element/Button";
+import Button, { THEM_DEF } from "./element/Button";
 import { __addComment } from "../slice/commentSlice";
 
 
